@@ -1,0 +1,24 @@
+.c-icon
+{
+    font-size: 2.4rem;
+    text-align: center;
+    display: inline-block;
+    &.no-stroke>.c-icon__src { stroke: none; }
+    &.no-fill>.c-icon__src { fill: none; }
+    >.c-icon__src
+    {
+        width: 1em;
+        height: 1em;
+        font-size: 1em;
+        margin: auto;
+        color: currentColor;
+        stroke: currentColor;
+        fill: currentColor;
+        display: block;
+        use svg
+        {
+            background-color: red;
+            :first-child { opacity: 0; }
+        }
+    }
+}

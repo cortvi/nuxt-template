@@ -1,0 +1,25 @@
+ @font-face {
+    font-family: '...';
+    src: url('/fonts/...') format('...');
+    font-weight: 300;
+    font-style: normal;
+}
+
+
+
+/* ——— Typography ——— */
+:root
+{
+    // --font-primary: "...", Arial, sans-serif;
+    // --font-secondary: "...", Arial, serif;
+    font-smooth: always;
+    font-synthesis: none;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+
+@media (max-width: 1024px)
+{
+
+}

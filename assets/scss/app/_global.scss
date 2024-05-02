@@ -1,0 +1,41 @@
+*, *::before, *::after
+{
+    box-sizing: inherit;
+    outline: none;
+}
+
+:root { color-scheme: light; }
+html
+{
+    // color: ;
+    // font-family: '...';
+    line-height: 1;
+    font-weight: 400;
+    font-size: 62.5%;
+    box-sizing: border-box;
+    &.no-scroll { overflow: hidden; }
+    // &, body { background-color: white; }
+    body
+    {
+        // color: var(--color-primary-600);
+        img
+        {
+            width: 100%;
+            height: auto;
+            display: block;
+            user-select: none;
+        }
+        [hidden] { display: none; }
+    }
+}
+
+
+/* Generic styles */
+.boxed
+{
+    max-width: 144rem;
+    // padding-left: var(--page-padding);
+    // padding-right: var(--page-padding);
+    margin-right: auto;
+    margin-left: auto;
+}

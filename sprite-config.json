@@ -1,0 +1,12 @@
+{
+    "dest": "public/svg/",
+    "svg": { "xmlDeclaration": false },
+    "shape": {
+        "id": { "generator": "svg-" }
+    },
+    "mode": {
+        "defs": {
+            "sprite": "../sprite.svg"
+        }
+    }
+}
