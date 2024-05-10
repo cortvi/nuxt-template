@@ -1,13 +1,20 @@
+type ViewState = {
+    width: number,
+    hieght: number,
+
+    /* Body font-size in pixels */
+    rem: number,
+}
+
+
 export const useView = () =>
 {
-    const state = useState<ViewState>('view-state', () =>
+    const hooked = useState('view-state-hooked', () => false);
+    const ready = useState('view-state-ready', () => false);
+    const state = useState<ViewState>('view-state', () => <ViewState>{ });
+    if (!hooked.value && !process.server)
     {
-        const initial = <ViewState>{ hooked: false };
-        return initial;
-    });
-    if (!state.value.hooked && !process.server)
-    {
-        state.value.hooked = true;
+        hooked.value = true;
         onMounted(() =>
         {
             state.value.rem = parseInt(
@@ -17,14 +24,22 @@ export const useView = () =>
             {
                 state.value.width = window.innerWidth;
                 state.value.hieght = window.innerHeight;
+                
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
             }
-            window.addEventListener('resize', onResize);
-            onResize();
+            if (window)
+            {                
+                window.addEventListener('resize', onResize);
+                window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
+                onResize();
+                requestAnimationFrame(() => ready.value = true);
+            }
         });
     }
     const isThin = (w: number) => state.value.width <= w;
     const isShort = (h: number) => state.value.hieght <= h;
 
 
-    return { dims: state, isThin, isShort };
+    return { ready, dims: state, isThin, isShort };
 }

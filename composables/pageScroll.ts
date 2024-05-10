@@ -1,3 +1,8 @@
+type ScrollLock = (
+    'waiting-page-load'
+)
+
+
 export const useTogglePageScroll = (key: ScrollLock, state: boolean) =>
 {
     const locks = useState<string[]>('site-scroll-locks', () => []);
