@@ -5,6 +5,7 @@ export const useView = () =>
     
     const width = useState('view-state-w', () => 0);
     const height = useState('view-state-h', () => 0);
+    const vh = useState('view-state-vh', () => 0);
     const rem = useState('view-state-rem', () => 10);
 
 
@@ -21,11 +22,11 @@ export const useView = () =>
                 width.value = window.innerWidth;
                 height.value = window.innerHeight;
                 
-                const vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
+                vh.value = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh.value}px`);
 
-                // const navbarH = document.querySelector('nav.c-navbar')!.clientHeight;
-                // document.documentElement.style.setProperty('--navbarH', `${navbarH}px`);
+                const navbarH = document.querySelector('nav.c-navbar')!.clientHeight;
+                document.documentElement.style.setProperty('--navbarH', `${navbarH}px`);
             }
             if (window)
             {                
@@ -40,5 +41,5 @@ export const useView = () =>
     const isShort = (h: number) => height.value <= h;
 
 
-    return { ready, isThin, isShort, width, height, rem };
+    return { ready, isThin, isShort, width, height, vh, rem };
 }
